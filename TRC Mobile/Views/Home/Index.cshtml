@@ -1,0 +1,36 @@
+﻿@model IList<TRC_Mobile.Models.SeriesListModel>
+
+@{
+    ViewBag.Title = "Home Page | TRC Mobile";
+}
+
+@*<h2>@ViewBag.Message</h2>*@
+<div id="logo_image" style="text-align: center; margin-left:0 auto; margin-right:0 auto; width: 95%;">
+    <img src="~/Content/images/trcmobile-startup-320x300.png" />
+</div>
+<div data-role="collapsible-set" data-inset="false" data-content-theme="c">
+    <div data-role="collapsible" data-inset="false" data-collapsed="false">
+        <h3>Listen Online</h3>
+        <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Recent Series</li>
+        @foreach (var item in Model) {
+            <li>
+                <a href="@Url.Action("Series", "Home", new { id = item.FBCode })">
+                    <h3>@item.Title</h3>
+                    <p><strong>@item.PublishedDate[2] @item.PublishedDate[1] @item.PublishedDate[3]</strong></p>
+                    <p>@System.Web.HttpUtility.HtmlDecode(item.Description)</p>
+                </a>
+            </li>                                           
+        } 
+        <li data-role="list-divider"></li>
+        <li>@Html.ActionLink("All Messages", "Series", "Home", new { id = "trcb-all" }, null)</li>  
+        </ul>
+    </div>
+    <div data-role="collapsible" data-inset="false">
+        <h3>More Info</h3>
+        <p>
+            <a href="@Url.Action("About", "Home")" data-role="button" data-theme="c">About Us</a>
+            <a href="@Url.Action("Contact", "Home")" data-role="button" data-theme="c">Donate</a>
+        </p>
+    </div>
+</div>

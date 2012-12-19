@@ -1,0 +1,49 @@
+﻿@model IList<TRC_Mobile.Models.MessageModel>
+
+@*@{
+    ViewBag.Title = "TRC Bangor - Series";
+}*@
+
+@section Header {
+    @Html.ActionLink("Home", "Index", "Home", null, new { data_icon = "home", data_rel = "back" })
+    <h1>@ViewBag.Title</h1>
+}
+
+<div style="text-align: center; margin-left:0 auto; margin-right:0 auto; width: 95%;">
+    <!-- Inject Raw HTML from Series Description -->
+    @Html.Raw(ViewData["DescriptionHTML"].ToString())
+</div>
+
+@*<div data-role="collapsible-set" data-inset="false" data-content-theme="b">
+    <div data-role="collapsible" data-inset="false" data-collapsed="false">
+            <h3>Series Messages</h3>*@
+            <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Series Messages</li>
+            @foreach (var item in Model) {
+                <li data-content-theme="b">
+                    @*<a href="@Url.Action("SessionByCode", new { session.Code })">*@
+                    <a href="@item.MediaURL" target="_blank"> <!-- TODO: link to Message Detail page -->
+                        <h3>@item.Title</h3>
+                        <p><strong>@item.PublishedDate[2] @item.PublishedDate[1] @item.PublishedDate[3]</strong> - 
+                        @System.Web.HttpUtility.HtmlDecode(item.Description)</p>
+                    </a>
+                    <div style="text-align:center;">
+                        <audio controls="controls"><source src="@item.MediaURL" /></audio>
+                    </div>
+                </li>                                           
+            }    
+            <li data-role="list-divider"></li>
+        </ul>
+@*    </div>
+</div>*@
+
+
+
+@*
+
+
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Navigation</li>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+</ul>*@
