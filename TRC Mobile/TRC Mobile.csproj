@@ -146,6 +146,10 @@
     <Content Include="Content\images\icons-18-white.png" />
     <Content Include="Content\images\icons-36-black.png" />
     <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\images\trcmobile-114.png" />
+    <Content Include="Content\images\trcmobile-144.png" />
+    <Content Include="Content\images\trcmobile-57.png" />
+    <Content Include="Content\images\trcmobile-72.png" />
     <Content Include="Content\images\trcmobile-startup-320x300.png" />
     <Content Include="Content\images\trcmobile-startup-480x300.png" />
     <Content Include="Content\jquery.mobile-1.1.0.css" />

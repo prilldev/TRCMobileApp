@@ -6,7 +6,23 @@
         <meta name="viewport" content="width=device-width" />
         @RenderSection("headcustommeta", false)
 
+        <!-- SHORTCUT ICONS (based on device) -->
+        <!-- Desktop Browser -->
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <!-- iPhone Low-Res --> 
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="~/Content/images/trcmobile-57.png" /> 
+        <!-- iPad Low-Res -->
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/images/trcmobile-72.png" />
+        <!-- iPhone Hi-Res --> 
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/images/trcmobile-114.png" /> 
+        <!-- iPad Hi-Res --> 
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/images/trcmobile-144.png" />
+        <!-- Android (ALL) --> 
+        <link rel="apple-touch-icon-precomposed" sizes="android-only" href="~/Content/images/trcmobile-57.png" /> 
+        <!-- default --> 
+        <link rel="apple-touch-icon-precomposed" href="~/Content/images/trcmobile-57.png" />
+
+
         @Styles.Render("~/Content/mobileCss", "~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
