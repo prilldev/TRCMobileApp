@@ -21,7 +21,12 @@
                 }
             </div>
             <div data-role="content">
+                @if (IsSectionDefined("ContentTop")) { @RenderSection("ContentTop", false) }
                 @RenderBody()
+            </div>
+            <div data-role="footer" class="ui-bar">
+                @Html.ActionLink("About", "About", "Home", null, new { data_icon = "info", data_role = "button" })
+                @Html.ActionLink("Contact", "Contact", "Home", null, new { data_icon = "grid", data_role = "button" })
             </div>
         </div>
 

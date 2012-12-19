@@ -1,14 +1,30 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "TRC Mobile | About";
+}
+
+@section Header {
+    @Html.ActionLink("Home", "Index", "Home", null, new { data_icon = "home" })
+    <h1>@ViewBag.Title</h1>
+}
+
+@section ContentTop {
+    <div id="logo_image" style="text-align: center; margin-left:0 auto; margin-right:0 auto; width: 95%;">
+        <img src="~/Content/images/trcmobile-startup-320x300.png" />
+    </div>
 }
 
 <h2>About</h2>
 <p>
-     Put content here.
+     TRC Mobile is a service of The Rock Church of Greater Bangor. Located in Bangor, Maine, we combine contemporary worship with Christ-centered preaching.
+     Our mission is make people into wholehearted followers of Jesus Christ. Visit our website <a href="www.trcbangor.com" target="_blank">trcbangor.com</a> for more information.
+</p>
+<h2>Give</h2>
+<p>
+    Help us keep services like TRC Mobile FREE for everyone <a href="https://secure12.nm-secure.com/trcbangor/litesite.cfm?id=232" data-role="button" data-mini="true" data-inline="true" target="_blank">Give by PayPal</a>
 </p>
 
-<ul data-role="listview" data-inset="true">
+@*<ul data-role="listview" data-inset="true">
     <li data-role="list-divider">Navigation</li>
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-</ul>
+</ul>*@

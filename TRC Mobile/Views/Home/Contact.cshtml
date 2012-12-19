@@ -1,17 +1,29 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "TRC Mobile | Contact";
+}
+
+@section Header {
+    @Html.ActionLink("Home", "Index", "Home", null, new { data_icon = "home" })
+    <h1>@ViewBag.Title</h1>
+}
+
+@section ContentTop {
+    <div id="logo_image" style="text-align: center; margin-left:0 auto; margin-right:0 auto; width: 95%;">
+        <img src="~/Content/images/trcmobile-startup-320x300.png" />
+    </div>
 }
 
 <h2>Contact</h2>
 
+<h3>Find Us</h3>
+<span>
+    1195 Ohio St<br />
+    Bangor, ME 04401<br />
+    <a href="#">Map</a>
+</span>
+
 <h3>Phone</h3>
-<span>425.555.0100</span>
+<span>(207)942-9977</span>
 
 <h3>Email</h3>
-<span><a href="mailto:General@example.com">General@example.com</a></span>
-
-<ul data-role="listview" data-inset="true">
-    <li data-role="list-divider">Navigation</li>
-    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-    <li>@Html.ActionLink("About", "About", "Home")</li>
-</ul>
+<span>info[at]trcbangor(dot)com</span>

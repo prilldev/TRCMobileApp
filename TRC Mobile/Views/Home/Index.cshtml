@@ -9,9 +9,13 @@
 }
 
 @*<h2>@ViewBag.Message</h2>*@
-<div id="logo_image" style="text-align: center; margin-left:0 auto; margin-right:0 auto; width: 95%;">
-    <img src="~/Content/images/trcmobile-startup-320x300.png" />
-</div>
+
+@section ContentTop {
+    <div id="logo_image" style="text-align: center; margin-left:0 auto; margin-right:0 auto; width: 95%;">
+        <img src="~/Content/images/trcmobile-startup-320x300.png" />
+    </div>
+}
+
 <div data-role="collapsible-set" data-inset="false" data-content-theme="c">
     <div data-role="collapsible" data-inset="false" data-collapsed="false">
         <h3>Listen Online</h3>
@@ -34,7 +38,7 @@
         <h3>More Info</h3>
         <p>
             <a href="@Url.Action("About", "Home")" data-role="button" data-theme="c">About Us</a>
-            <a href="@Url.Action("Contact", "Home")" data-role="button" data-theme="c">Donate</a>
+            <a href="@Url.Action("Contact", "Home")" data-role="button" data-theme="c">Contact</a>
         </p>
     </div>
 </div>
