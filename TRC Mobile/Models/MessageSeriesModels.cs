@@ -46,6 +46,7 @@ namespace TRC_Mobile.Models
 
     public class MessageModel
     {
+        public string feedURLBase { get { return "http://feeds.feedburner.com/"; } }
         public string[] PublishedDate { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
@@ -55,7 +56,7 @@ namespace TRC_Mobile.Models
 
     public class SeriesListModel
     {
-        const string feedURLBase = "http://feeds.feedburner.com/";
+        public string feedURLBase { get { return "http://feeds.feedburner.com/"; } }
         public string[] PublishedDate { get; set; }
         public string Description { get; set; }
         public string DescriptionHTML { get; set; }
@@ -64,7 +65,7 @@ namespace TRC_Mobile.Models
         public string ImageURL { get; set; }
         public string FeedURL
         {
-            get { return feedURLBase + FBCode; }
+            get { return "http://feeds.feedburner.com/" + FBCode; }
         }
 
     }

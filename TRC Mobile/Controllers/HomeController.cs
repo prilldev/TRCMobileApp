@@ -46,11 +46,21 @@ namespace TRC_Mobile.Controllers
             ViewBag.Title = (selSeries == null ? "All" : selSeries.Title) + " | TRC Mobile";
             ViewBag.Message = (selSeries == null ? "List of All Messages..." : selSeries.Description);
 
-            string urlBase = "http://feeds.feedburner.com/";
-
-            return View(TRC_Mobile.Models.SeriesModel.SeriesMessages(urlBase + id));
+            return View(TRC_Mobile.Models.SeriesModel.SeriesMessages(selSeries.feedURLBase + id));
         }
 
+        public ActionResult MessageDetail(string serId, string msgDate)
+        {
+            ViewData.Add("SerId", serId);
+
+            var mDet = new MessageModel();
+            var serMsgs = SeriesModel.SeriesMessages(mDet.feedURLBase + serId);
+            mDet = (from md in serMsgs
+                          where (md.PublishedDate[2] + "-" + md.PublishedDate[1]).ToString() == msgDate
+                          select md).First();
+
+            return View(mDet);
+        }
 
     }
 }

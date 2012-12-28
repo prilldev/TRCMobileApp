@@ -22,7 +22,8 @@
             @foreach (var item in Model) {
                 <li data-content-theme="b">
                     @*<a href="@Url.Action("SessionByCode", new { session.Code })">*@
-                    <a href="@item.MediaURL" target="_blank"> <!-- TODO: link to Message Detail page -->
+                    @*<a href="@item.MediaURL" target="_blank">*@
+                    <a href="@Url.Action("MessageDetail", "Home", new { serId = ViewData["FBCode"], msgDate = (@item.PublishedDate[2] + '-' + @item.PublishedDate[1]) })"> <!-- link to Message Detail page -->
                         <h3>@item.Title</h3>
                         <p><strong>@item.PublishedDate[2] @item.PublishedDate[1] @item.PublishedDate[3]</strong> - 
                         @System.Web.HttpUtility.HtmlDecode(item.Description)</p>

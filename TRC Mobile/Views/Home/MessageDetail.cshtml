@@ -1,0 +1,31 @@
+﻿@model TRC_Mobile.Models.MessageModel
+
+@{
+    ViewBag.Title = "Message";
+}
+
+
+@section Header {
+    @Html.ActionLink("Back", "Series", "Home", new { id = ViewData["SerId"] }, new { data_icon = "back", data_rel = "back" })
+    <h1>@Model.Title | TRC Mobile</h1>
+}
+
+<div>
+    <h2>@Model.Title</h2>
+    <p>
+        <strong>@Model.PublishedDate[2] @Model.PublishedDate[1] @Model.PublishedDate[3]</strong>
+    </p>
+
+    @*<ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Speakers</li>
+        @foreach (var speaker in Model.Speakers) {
+            <li>@Html.ActionLink(speaker, "SessionsBySpeaker", new { speaker })</li>
+        }
+    </ul>*@
+
+    <p>
+        @System.Web.HttpUtility.HtmlDecode(Model.Description)
+    </p>
+
+    <audio controls="controls"><source src="@Model.MediaURL" /><a href="@Model.MediaURL" target="_blank">Listen</a></audio>
+</div>

@@ -25,7 +25,7 @@
             <li>
                 <a href="@Url.Action("Series", "Home", new { id = item.FBCode })">
                     <h3>@item.Title</h3>
-                    <p><strong>@item.PublishedDate[2] @item.PublishedDate[1] @item.PublishedDate[3]</strong></p>
+                    <p><small><em>Started <strong>@item.PublishedDate[2] @item.PublishedDate[3]</strong></em></small></p>
                     <p>@System.Web.HttpUtility.HtmlDecode(item.Description)</p>
                 </a>
             </li>                                           
