@@ -33,7 +33,7 @@
                     @RenderSection("Header")
                 } else {
                     <h1>@ViewBag.Title</h1>
-                    @Html.Partial("_LoginPartial")
+                    @*@Html.Partial("_LoginPartial")*@
                 }
             </div>
             <div data-role="content">
@@ -41,8 +41,13 @@
                 @RenderBody()
             </div>
             <div data-role="footer" class="ui-bar">
-                @Html.ActionLink("About", "About", "Home", null, new { data_icon = "info", data_role = "button" })
-                @Html.ActionLink("Contact", "Contact", "Home", null, new { data_icon = "grid", data_role = "button" })
+                @if (IsSectionDefined("Footer")) {
+                        @RenderSection("Footer")
+                } else {
+                    <!-- default Footer -->
+                        @Html.ActionLink("About", "About", "Home", null, new { data_icon = "info", data_role = "button" })
+                        @Html.ActionLink("Contact", "Contact", "Home", null, new { data_icon = "grid", data_role = "button" })
+                }
             </div>
         </div>
 

@@ -41,10 +41,20 @@ namespace TRC_Mobile.Controllers
                               where s.FBCode == id
                               select s).LastOrDefault();
 
+            //if no Series was found (ie, when "All Messages" was clicked)
+            //- create new instance and set some defaults
+            if (selSeries == null)
+            {
+                selSeries = new SeriesListModel();
+                selSeries.Title = "All Messages";
+                selSeries.Description = "List of All Message...";
+                selSeries.DescriptionHTML = "<p></p>";
+            }
+
             ViewData.Add("FBCode", id);
-            ViewData.Add("DescriptionHTML", (selSeries == null ? "<p></p>" : selSeries.DescriptionHTML));
-            ViewBag.Title = (selSeries == null ? "All" : selSeries.Title) + " | TRC Mobile";
-            ViewBag.Message = (selSeries == null ? "List of All Messages..." : selSeries.Description);
+            ViewData.Add("DescriptionHTML", selSeries.DescriptionHTML);
+            ViewBag.Title = selSeries.Title + " | TRC Mobile";
+            ViewBag.Message = selSeries.Description;
 
             return View(TRC_Mobile.Models.SeriesModel.SeriesMessages(selSeries.feedURLBase + id));
         }

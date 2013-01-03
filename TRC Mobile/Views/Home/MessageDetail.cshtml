@@ -7,7 +7,12 @@
 
 @section Header {
     @Html.ActionLink("Back", "Series", "Home", new { id = ViewData["SerId"] }, new { data_icon = "back", data_rel = "back" })
+    @Html.ActionLink("Home", "Index", "Home", null, new { data_icon = "home" })
     <h1>@Model.Title | TRC Mobile</h1>
+}
+
+@section Footer {
+    <h4>Message Detail Footer</h4>
 }
 
 <div>

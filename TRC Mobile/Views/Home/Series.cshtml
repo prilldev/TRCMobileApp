@@ -9,6 +9,11 @@
     <h1>@ViewBag.Title</h1>
 }
 
+@section Footer {
+    <a href="@HttpUtility.HtmlAttributeEncode("http://m.facebook.com/sharer.php?u=" + "http://trcmobile.apphb.com/Home/Series/" + ViewData["FBCode"])" data-icon="back"></a>
+    <h4>Share</h4>
+}
+
 <div style="text-align: center; margin-left:0 auto; margin-right:0 auto; width: 95%;">
     <!-- Inject Raw HTML from Series Description -->
     @Html.Raw(ViewData["DescriptionHTML"].ToString())
