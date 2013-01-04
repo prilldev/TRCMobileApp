@@ -60,14 +60,35 @@ namespace TRC_Mobile.Models
         public string[] PublishedDate { get; set; }
         public string Description { get; set; }
         public string DescriptionHTML { get; set; }
-        public string Title { get; set; }
+        public string Title  { get; set; }
         public string FBCode { get; set; }
-        public string ImageURL { get; set; }
+        public string ImageURL
+        {
+            get { return ExtractImageURL(DescriptionHTML); }
+        }
         public string FeedURL
         {
             get { return "http://feeds.feedburner.com/" + FBCode; }
         }
 
+        private string ExtractImageURL(string descHTML)
+        {
+            if (descHTML.Contains("<img"))
+            {
+                int startTagLoc = descHTML.IndexOf("<img");
+                int endTagLoc = descHTML.Substring(startTagLoc).IndexOf("/>") + 2;
+                string imgTag = descHTML.Substring(startTagLoc, endTagLoc);
+
+                int startImgUrl = imgTag.IndexOf("http");
+                int lenImgUrl = imgTag.Substring(startImgUrl).IndexOf(".jpg") + 4;
+
+                return imgTag.Substring(startImgUrl, lenImgUrl);
+            }
+            else
+            {
+                return "http://trcmedia.mainewebpress.net/files/2013/01/trcmobile-320-150x150.png";
+            }
+        }
     }
 
 

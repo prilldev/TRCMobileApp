@@ -12,8 +12,9 @@
 }
 
 @section Footer {
-    <h4>Message Detail Footer</h4>
+    <a href="@HttpUtility.HtmlAttributeEncode("http://facebook.com/sharer.php?u=" + "http://trcmobile.apphb.com" + @Request.RawUrl)" target="_blank" >Share <img src="~/Content/images/small_facebook_icon.png" /></a>
 }
+
 
 <div>
     <h2>@Model.Title</h2>
@@ -29,6 +30,7 @@
     </ul>*@
 
     <p>
+        <img style="float:left; width:150px; padding:3px;" src="@Model.ThumbnailURL" />
         @System.Web.HttpUtility.HtmlDecode(Model.Description)
     </p>
 

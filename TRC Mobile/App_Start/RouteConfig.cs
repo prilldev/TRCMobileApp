@@ -13,6 +13,10 @@ namespace TRC_Mobile
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: "MessageDetail",
+                url: "{controller}/{action}/{serId}/{msgDate}"
+            );
 
             routes.MapRoute(
                 name: "Default",

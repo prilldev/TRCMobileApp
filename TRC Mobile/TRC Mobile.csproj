@@ -146,6 +146,8 @@
     <Content Include="Content\images\icons-18-white.png" />
     <Content Include="Content\images\icons-36-black.png" />
     <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\images\small_facebook_icon.png" />
+    <Content Include="Content\images\small_twitter_icon.png" />
     <Content Include="Content\images\trcmobile-114.png" />
     <Content Include="Content\images\trcmobile-144.png" />
     <Content Include="Content\images\trcmobile-57.png" />

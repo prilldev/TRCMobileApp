@@ -37,36 +37,63 @@ namespace TRC_Mobile.Controllers
         public ActionResult Series(string id)
         {
             TRCSeriesList = TRC_Mobile.Models.SeriesModel.SeriesList(urlSeriesList);
-            var selSeries = (from s in TRCSeriesList
+            var SelectedSeries = (from s in TRCSeriesList
                               where s.FBCode == id
                               select s).LastOrDefault();
 
             //if no Series was found (ie, when "All Messages" was clicked)
             //- create new instance and set some defaults
-            if (selSeries == null)
+            if (SelectedSeries == null)
             {
-                selSeries = new SeriesListModel();
-                selSeries.Title = "All Messages";
-                selSeries.Description = "List of All Message...";
-                selSeries.DescriptionHTML = "<p></p>";
+                SelectedSeries = new SeriesListModel();
+                SelectedSeries.Title = "All Messages";
+                SelectedSeries.Description = "List of All Message...";
+                SelectedSeries.DescriptionHTML = "<p></p>";
             }
 
             ViewData.Add("FBCode", id);
-            ViewData.Add("DescriptionHTML", selSeries.DescriptionHTML);
-            ViewBag.Title = selSeries.Title + " | TRC Mobile";
-            ViewBag.Message = selSeries.Description;
+            ViewData.Add("DescriptionHTML", SelectedSeries.DescriptionHTML);
+            ViewData.Add("SeriesImageURL", SelectedSeries.ImageURL);
+            ViewBag.Title = SelectedSeries.Title + " | TRC Mobile";
+            ViewBag.Message = SelectedSeries.Description;
 
-            return View(TRC_Mobile.Models.SeriesModel.SeriesMessages(selSeries.feedURLBase + id));
+            var sm = SeriesModel.SeriesMessages(SelectedSeries.feedURLBase + id);
+
+
+            //return View(TRC_Mobile.Models.SeriesModel.SeriesMessages(selSeries.feedURLBase + id));
+            return View(sm);
         }
 
         public ActionResult MessageDetail(string serId, string msgDate)
         {
+            TRCSeriesList = TRC_Mobile.Models.SeriesModel.SeriesList(urlSeriesList);
+            var SelectedSeries = (from s in TRCSeriesList
+                                  where s.FBCode == serId
+                                  select s).LastOrDefault();
+
+            //if no Series was found (ie, when "All Messages" was clicked)
+            //- create new instance and set some defaults
+            if (SelectedSeries == null)
+            {
+                SelectedSeries = new SeriesListModel();
+                SelectedSeries.Title = "All Messages";
+                SelectedSeries.Description = "List of All Message...";
+                SelectedSeries.DescriptionHTML = "<p></p>";
+            }
+
             ViewData.Add("SerId", serId);
+            ViewData.Add("MsgDate", msgDate);
 
             var mDet = new MessageModel();
+
             var serMsgs = SeriesModel.SeriesMessages(mDet.feedURLBase + serId);
+            foreach (var m in serMsgs)
+            {
+                m.ThumbnailURL = SelectedSeries.ImageURL;
+            }
+
             mDet = (from md in serMsgs
-                          where (md.PublishedDate[2] + "-" + md.PublishedDate[1]).ToString() == msgDate
+                          where (md.PublishedDate[2] + md.PublishedDate[1]).ToString() == msgDate
                           select md).First();
 
             return View(mDet);
