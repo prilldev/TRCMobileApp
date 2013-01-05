@@ -83,6 +83,7 @@ namespace TRC_Mobile.Controllers
 
             ViewData.Add("SerId", serId);
             ViewData.Add("MsgDate", msgDate);
+            ViewData.Add("SerTitle", SelectedSeries.Title);
 
             var mDet = new MessageModel();
 
