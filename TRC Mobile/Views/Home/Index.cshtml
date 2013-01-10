@@ -20,15 +20,23 @@
     <div data-role="collapsible" data-inset="false" data-collapsed="true">
         <h3>Listen Online</h3>
         <ul data-role="listview" data-inset="true">
-        <li data-role="list-divider">Recent Series</li>
         @foreach (var item in Model) {
+            //trcbangor-current should ALWAYS be first. If not, something is messed up
+            if (item.FBCode == "trcbangor-current")
+            {
+                <li data-role="list-divider">Current Series</li>
+            }
             <li>
                 <a href="@Url.Action("Series", "Home", new { id = item.FBCode })">
                     <h3>@item.Title</h3>
                     <p><small><em>Started <strong>@item.PublishedDate[2] @item.PublishedDate[3]</strong></em></small></p>
                     <p>@System.Web.HttpUtility.HtmlDecode(item.Description)</p>
                 </a>
-            </li>                                           
+            </li>    
+            if (item.FBCode == "trcbangor-current")
+            {
+                <li data-role="list-divider">Recent Series</li>
+            }                                       
         } 
         <li data-role="list-divider"></li>
         <li>@Html.ActionLink("All Messages", "Series", "Home", new { id = "trcb-all" }, null)</li>  

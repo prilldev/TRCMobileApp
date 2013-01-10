@@ -48,5 +48,7 @@
         @System.Web.HttpUtility.HtmlDecode(Model.Description)
     </p>
 
-    <audio controls="controls"><source src="@Model.MediaURL" /><a href="@Model.MediaURL" target="_blank">Listen</a></audio>
+    <audio controls="controls"><source src="@Model.MediaURL" /></audio><br />
+    <a href="@Model.MediaURL" target="_blank" data-role="button" data-icon="info" data-inline="true" data-mini="true">Download MP3</a>
+
 </div>
